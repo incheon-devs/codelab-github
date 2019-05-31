@@ -16,7 +16,14 @@
 var LOTTO = document.getElementById("LOTTO");
 // 로또 번호 추첨 함수 
 function getLuckyNumber(){
-    LOTTO.innerHTML = genLottoNo();
+    var numbers = [];
+    while( numbers.length < 6 ) {
+        var newNumber = genLottoNo();
+        if( numbers.indexOf(newNumber)<0 ) { // 중복검사
+            numbers.push(newNumber);
+        }
+    }
+    LOTTO.innerHTML = numbers.join(" ");
 }
 // 랜덤 번호 생성 함수
 function genLottoNo(){
